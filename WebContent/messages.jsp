@@ -46,6 +46,8 @@ if (action == null || "".equals(action)) {
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <link href="styles/style.css" type="text/css" rel="stylesheet">
 <meta charset="ISO-8859-1">
 <title>Poruke</title>
@@ -61,9 +63,13 @@ if (action == null || "".equals(action)) {
 		window.location.href = "messages.jsp?action=odgovoriNaPoruku";
 	}
 	
+	  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+	  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+	    return new bootstrap.Tooltip(tooltipTriggerEl);
+	  });
 </script>
 </head>
-<body>
+<body data-bs-toggle="tooltip" data-bs-placement="top">
 	<div id="logovi" class="col main">
 		<div class="row" style="height: 3%;"></div>
 		<div
@@ -103,7 +109,7 @@ if (action == null || "".equals(action)) {
 							<button class="btn btn-card-unread"
 								onclick="procitajPoruku(<%=p.getId()%>)">Pregledaj
 								poruku</button>
-							<button class="btn btn-card-unread" onclick="odgovoriNaPoruku()">Odgovori</button>
+							<button class="btn btn-card-unread" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip Text" onclick="odgovoriNaPoruku()">Odgovori</button>
 						</div>
 					</div>
 					<div class="card-body">
