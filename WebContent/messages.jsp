@@ -18,7 +18,7 @@ if (action == null || "".equals(action)) {
 	if (request.getParameter("searchText") != null && request.getParameter("searchText") != "") {
 		String content = request.getParameter("searchText");
 		System.out.print("+++++++++++" + content);
-		poruke = savjetnikBean.getMessageByContent(content,savjetnikBean.getSavjetnik().getJMBG());
+		poruke = savjetnikBean.getMessageByContent(content, savjetnikBean.getSavjetnik().getJMBG());
 		//session.setAttribute("searchTerm", request.getParameter("searchText"));
 		request.setAttribute("searchTerm", "");
 	} else {
@@ -29,12 +29,14 @@ if (action == null || "".equals(action)) {
 
 	if (request.getParameter("idPoruke") != null || !"".equals(request.getParameter("idPoruke"))) {
 		int id = Integer.parseInt(request.getParameter("idPoruke"));
-		if(porukaBean.MarkMessageAsRead(id)){
-			poruke = savjetnikBean.getAllMessages(savjetnikBean.getSavjetnik().getJMBG());
-			session.setAttribute("porukaProcitana", true);
+		if (porukaBean.MarkMessageAsRead(id)) {
+	poruke = savjetnikBean.getAllMessages(savjetnikBean.getSavjetnik().getJMBG());
+	session.setAttribute("porukaProcitana", true);
 		}
 	}
-	
+
+} else if (action.equals("odgovoriNaPoruku")) {
+	response.sendRedirect("sendEmail.jsp");
 }
 %>
 <!DOCTYPE html>
@@ -54,6 +56,11 @@ if (action == null || "".equals(action)) {
 				+ idPoruke;
 		
 	}
+	
+	function odgovoriNaPoruku() {
+		window.location.href = "messages.jsp?action=odgovoriNaPoruku";
+	}
+	
 </script>
 </head>
 <body>
@@ -93,8 +100,10 @@ if (action == null || "".equals(action)) {
 						class="card-header d-flex justify-content-between align-items-center">
 						<%=p.getKorisnik().getIme() + " " + p.getKorisnik().getPrezimme()%>
 						<div>
-							<button class="btn btn-card-unread" onclick="procitajPoruku(<%=p.getId()%>)">Pregledaj poruku</button>
-							<button class="btn btn-card-unread">Odgovori</button>
+							<button class="btn btn-card-unread"
+								onclick="procitajPoruku(<%=p.getId()%>)">Pregledaj
+								poruku</button>
+							<button class="btn btn-card-unread" onclick="odgovoriNaPoruku()">Odgovori</button>
 						</div>
 					</div>
 					<div class="card-body">
@@ -113,8 +122,12 @@ if (action == null || "".equals(action)) {
 					<div
 						class="card-header d-flex justify-content-between align-items-center">
 						<%=p.getKorisnik().getIme() + " " + p.getKorisnik().getPrezimme()%>
+						<div>
+							<button class="btn btn-card-read" disabled="disabled">Pregledana
+								poruka</button>
+							<button class="btn btn-card-read" onclick="odgovoriNaPoruku()">Odgovori</button>
+						</div>
 
-						<button class="btn btn-card-read">Odgovori</button>
 					</div>
 					<div class="card-body">
 						<%=p.getSadrzaj()%>
@@ -133,12 +146,12 @@ if (action == null || "".equals(action)) {
 
 	<script>
     window.addEventListener('load', () => {
-    	const toastShownSuccess = <%= session.getAttribute("porukaProcitana")%>
+    	const toastShownSuccess = <%=session.getAttribute("porukaProcitana")%>
      
         if (toastShownSuccess) {
          alert(Poruka procitana);
 
-            <% session.setAttribute("porukaProcitana", "false");%>
+            <%session.setAttribute("porukaProcitana", "false");%>
         }
     });
     </script>
