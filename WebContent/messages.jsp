@@ -69,8 +69,8 @@ if (action == null || "".equals(action)) {
 	  });
 </script>
 </head>
-<body data-bs-toggle="tooltip" data-bs-placement="top">
-	<div id="logovi" class="col main">
+
+	<div id="logovi" class="col  main">
 		<div class="row" style="height: 3%;"></div>
 		<div
 			class="row horizontalline justify-content-center align-items-center">
@@ -90,7 +90,7 @@ if (action == null || "".equals(action)) {
 					<button class="btn btn-card-read" type="submit" id="button-addon2">Tra&zcaron;i</button>
 				</form>
 			</div>
-			<div class="cool-1"></div>
+			<div class="col-1"></div>
 		</div>
 		<div id="poruke"
 			class="container justify-content-center align-items-center">
@@ -161,5 +161,5 @@ if (action == null || "".equals(action)) {
         }
     });
     </script>
-</body>
+
 </html>
