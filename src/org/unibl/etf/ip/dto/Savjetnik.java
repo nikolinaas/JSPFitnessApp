@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Savjetnik {
 
-	private String JMBG;
+	private Integer id;
 	private String ime;
 	private String prezime;
 	private String brtelefona;
@@ -17,10 +17,10 @@ public class Savjetnik {
 
 	}
 
-	public Savjetnik(String jMBG, String ime, String prezime, String brtelefona, String adresa, String email,
+	public Savjetnik(Integer id, String ime, String prezime, String brtelefona, String adresa, String email,
 			Nalog nalog) {
 		super();
-		JMBG = jMBG;
+		this.id = id;
 		this.ime = ime;
 		this.prezime = prezime;
 		this.brtelefona = brtelefona;
@@ -29,10 +29,28 @@ public class Savjetnik {
 		this.nalog = nalog;
 	}
 
-	
+	public Savjetnik(String ime, String prezime, String brtelefona, String adresa, String email,
+			Nalog nalog) {
+		super();
+		this.ime = ime;
+		this.prezime = prezime;
+		this.brtelefona = brtelefona;
+		this.adresa = adresa;
+		this.email = email;
+		this.nalog = nalog;
+	}
 	
 	public ArrayList<Poruka> getPoruke() {
 		return poruke;
+	}
+
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public void setPoruke(ArrayList<Poruka> poruke) {
@@ -45,14 +63,6 @@ public class Savjetnik {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getJMBG() {
-		return JMBG;
-	}
-
-	public void setJMBG(String jMBG) {
-		JMBG = jMBG;
 	}
 
 	public String getIme() {

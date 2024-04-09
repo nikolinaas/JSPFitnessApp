@@ -179,7 +179,7 @@ table {
 	color:white;
 }
 .card-header{
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .card-body{
@@ -196,4 +196,8 @@ table {
 .content{
 	height: calc(100vh - 184px) !important;
 	
+}
+naslov-class{
+	font-size: 16px;
+
 }

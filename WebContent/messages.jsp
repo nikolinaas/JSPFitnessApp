@@ -12,17 +12,17 @@
 ArrayList<Poruka> poruke = new ArrayList<Poruka>();
 String action = request.getParameter("action");
 if (action == null || "".equals(action)) {
-	System.out.print("+++++++++++" + savjetnikBean.getSavjetnik().getJMBG());
-	poruke = savjetnikBean.getAllMessages(savjetnikBean.getSavjetnik().getJMBG());
+	System.out.print("+++++++++++" + savjetnikBean.getSavjetnik().getId());
+	poruke = savjetnikBean.getAllMessages(savjetnikBean.getSavjetnik().getId());
 } else if (action.equals("trazi")) {
 	if (request.getParameter("searchText") != null && request.getParameter("searchText") != "") {
 		String content = request.getParameter("searchText");
 		System.out.print("+++++++++++" + content);
-		poruke = savjetnikBean.getMessageByContent(content, savjetnikBean.getSavjetnik().getJMBG());
+		poruke = savjetnikBean.getMessageByContent(content, savjetnikBean.getSavjetnik().getId());
 		//session.setAttribute("searchTerm", request.getParameter("searchText"));
 		request.setAttribute("searchTerm", "");
 	} else {
-		poruke = savjetnikBean.getAllMessages(savjetnikBean.getSavjetnik().getJMBG());
+		poruke = savjetnikBean.getAllMessages(savjetnikBean.getSavjetnik().getId());
 	}
 
 } else if (action.equals("procitajPoruku")) {
@@ -30,7 +30,7 @@ if (action == null || "".equals(action)) {
 	if (request.getParameter("idPoruke") != null || !"".equals(request.getParameter("idPoruke"))) {
 		int id = Integer.parseInt(request.getParameter("idPoruke"));
 		if (porukaBean.MarkMessageAsRead(id)) {
-	poruke = savjetnikBean.getAllMessages(savjetnikBean.getSavjetnik().getJMBG());
+	poruke = savjetnikBean.getAllMessages(savjetnikBean.getSavjetnik().getId());
 	session.setAttribute("porukaProcitana", true);
 		}
 	}
@@ -112,7 +112,9 @@ if (action == null || "".equals(action)) {
 							<button class="btn btn-card-unread" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip Text" onclick="odgovoriNaPoruku()">Odgovori</button>
 						</div>
 					</div>
+					
 					<div class="card-body">
+					<div class="naslov-class"><%=p.getNaslov()%></div>
 						<%=p.getSadrzaj()%>
 					</div>
 				</div>
@@ -136,6 +138,7 @@ if (action == null || "".equals(action)) {
 
 					</div>
 					<div class="card-body">
+					<div class="naslov-class"><%=p.getNaslov()%></div>
 						<%=p.getSadrzaj()%>
 					</div>
 				</div>

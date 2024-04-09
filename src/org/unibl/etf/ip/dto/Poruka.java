@@ -3,6 +3,7 @@ package org.unibl.etf.ip.dto;
 public class Poruka {
 
 	private int id;
+	private String naslov;
 	private String sadrzaj;
 	private boolean procitana;
 	private Savjetnik savjetnik;
@@ -12,21 +13,31 @@ public class Poruka {
 		
 	}
 	
-	public Poruka(int id, String sadrzaj, boolean procitana, Savjetnik savjetnik) {
+	public Poruka(int id, String sadrzaj, String naslov, boolean procitana, Savjetnik savjetnik) {
 		super();
 		this.id = id;
+		this.naslov = naslov;
 		this.sadrzaj = sadrzaj;
 		this.procitana = procitana;
 		this.savjetnik = savjetnik;
 	}
 	
 	
-	public Poruka(int id, String sadrzaj, boolean procitana, Korisnik korisnik) {
+	public Poruka(int id, String sadrzaj, String naslov, boolean procitana, Korisnik korisnik) {
 		super();
 		this.id = id;
 		this.sadrzaj = sadrzaj;
+		this.naslov = naslov;
 		this.procitana = procitana;
 		this.korisnik = korisnik;
+	}
+
+	public String getNaslov() {
+		return naslov;
+	}
+
+	public void setNaslov(String naslov) {
+		this.naslov = naslov;
 	}
 
 	public Korisnik getKorisnik() {

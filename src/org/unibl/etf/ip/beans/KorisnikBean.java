@@ -20,9 +20,9 @@ public class KorisnikBean {
 
 
 
-	public Korisnik getUserById(String jmbg) {
+	public Korisnik getUserById(Integer id) {
 
-		return KorisnikDAO.getUserById(jmbg);
+		return KorisnikDAO.getUserById(id);
 
 	}
 	

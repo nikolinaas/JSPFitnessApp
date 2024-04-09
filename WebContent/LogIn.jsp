@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <%
 if (request.getParameter("submit") != null) {
+	System.out.println("submit");
 	if (request.getParameter("username") != null && request.getParameter("password") != null) {
 		if (savjetnikBean.LogIn(request.getParameter("username"), request.getParameter("password"))) {
 	System.out.println("************" + savjetnikBean.getSavjetnik().getIme());

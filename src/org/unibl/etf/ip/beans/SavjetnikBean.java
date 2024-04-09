@@ -23,7 +23,7 @@ public class SavjetnikBean {
 
 	public boolean LogIn(String username, String pass) {
 		
-		
+		System.out.println("login");
 		if(SavjetnikDAO.areCredentialsValid(username, pass))
 		{
 			savjetnik = getAdvisorByUsernameAndPass(username, pass);
@@ -39,12 +39,12 @@ public class SavjetnikBean {
 	return savjetnik;
 	
 	}
-	public ArrayList<Poruka> getAllMessages(String jmbg){
+	public ArrayList<Poruka> getAllMessages(Integer id){
 		
-		return SavjetnikDAO.getAllMessages(jmbg);
+		return SavjetnikDAO.getAllMessages(id);
 	}
 	
-	public ArrayList<Poruka> getMessageByContent(String content,String jmbg){
-		return SavjetnikDAO.getMessageByContent(content, jmbg);
+	public ArrayList<Poruka> getMessageByContent(String content,Integer id){
+		return SavjetnikDAO.getMessageByContent(content, id);
 	}
 }
