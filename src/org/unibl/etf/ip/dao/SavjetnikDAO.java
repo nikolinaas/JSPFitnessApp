@@ -75,7 +75,7 @@ public class SavjetnikDAO {
 			PreparedStatement pstmt = DAOUtil.prepareStatement(connection, SQL_SELECT_ALL_ACCOUNTS, false, values);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				res.add(new Savjetnik(rs.getInt("id"), rs.getString("ime"),rs.getString("prezime"), rs.getString("brTelefona"),rs.getString("adresa"), rs.getString("email"), NalogDAO.getAccountById(rs.getInt("nalog_idnalog"))));
+				res.add(new Savjetnik(rs.getInt("id"), rs.getString("ime"),rs.getString("prezime"), rs.getString("br_telefona"),rs.getString("adresa"), rs.getString("email"), NalogDAO.getAccountById(rs.getInt("nalog_idnalog"))));
 				
 			}
 			pstmt.close();
@@ -118,7 +118,7 @@ public class SavjetnikDAO {
 			pstmt.setString(2, pass);
 			rs = pstmt.executeQuery(); 
 			if (rs.next()){
-				res = new Savjetnik(rs.getInt("id"), rs.getString("ime"), rs.getString("prezime"), rs.getString("email"),rs.getString("brTelefona"), rs.getString("adresa"), NalogDAO.getAccountById(rs.getInt("nalog_idnalog")));				
+				res = new Savjetnik(rs.getInt("id"), rs.getString("ime"), rs.getString("prezime"), rs.getString("email"),rs.getString("br_telefona"), rs.getString("adresa"), NalogDAO.getAccountById(rs.getInt("nalog_idnalog")));				
 			}
 			pstmt.close();
 		} catch (SQLException exp) {

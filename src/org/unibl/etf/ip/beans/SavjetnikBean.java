@@ -1,10 +1,15 @@
 package org.unibl.etf.ip.beans;
 
 import java.util.ArrayList;
+import java.util.Properties;
+
+import javax.activation.FileDataSource;
+import javax.sql.DataSource;
 
 import org.unibl.etf.ip.dao.SavjetnikDAO;
 import org.unibl.etf.ip.dto.Poruka;
 import org.unibl.etf.ip.dto.Savjetnik;
+
 
 public class SavjetnikBean {
 

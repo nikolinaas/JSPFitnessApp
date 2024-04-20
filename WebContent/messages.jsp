@@ -36,6 +36,7 @@ if (action == null || "".equals(action)) {
 	}
 
 } else if (action.equals("odgovoriNaPoruku")) {
+
 	response.sendRedirect("sendEmail.jsp");
 }
 %>
@@ -59,8 +60,8 @@ if (action == null || "".equals(action)) {
 		
 	}
 	
-	function odgovoriNaPoruku() {
-		window.location.href = "messages.jsp?action=odgovoriNaPoruku";
+	function odgovoriNaPoruku(email) {
+		window.location.href = "messages.jsp?action=odgovoriNaPoruku" ;
 	}
 	
 	  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
@@ -109,7 +110,7 @@ if (action == null || "".equals(action)) {
 							<button class="btn btn-card-unread"
 								onclick="procitajPoruku(<%=p.getId()%>)">Pregledaj
 								poruku</button>
-							<button class="btn btn-card-unread" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip Text" onclick="odgovoriNaPoruku()">Odgovori</button>
+							<button class="btn btn-card-unread" onclick="odgovoriNaPoruku(<%session.setAttribute("userEmail", p.getKorisnik().getEmail());%>)">Odgovori</button>
 						</div>
 					</div>
 					
@@ -129,11 +130,12 @@ if (action == null || "".equals(action)) {
 				<div class="card  mb-1 card-read" style="width: 100%;">
 					<div
 						class="card-header d-flex justify-content-between align-items-center">
-						<%=p.getKorisnik().getIme() + " " + p.getKorisnik().getPrezimme()%>
+						<%=p.getKorisnik().getIme() + " " + p.getKorisnik().getPrezimme() %>
+						
 						<div>
-							<button class="btn btn-card-read" disabled="disabled">Pregledana
+							<button class="btn btn-card-read" disabled="disabled">Pregledana 
 								poruka</button>
-							<button class="btn btn-card-read" onclick="odgovoriNaPoruku()">Odgovori</button>
+							<button class="btn btn-card-read" onclick="odgovoriNaPoruku(<%session.setAttribute("userEmail", p.getKorisnik().getEmail());%>)">Odgovori</button>
 						</div>
 
 					</div>
